@@ -320,3 +320,20 @@ body.intro-ready .hook-underline:after{animation:hookUnderline .8s .82s cubic-be
  .virtual-panel{padding:32px 25px;min-height:0}
  .desktop-only{display:none}
 }
+
+/* v28 — full motion system */
+@keyframes fadeUp{from{opacity:0;transform:translateY(34px)}to{opacity:1;transform:none}}
+@keyframes fadeLeft{from{opacity:0;transform:translateX(-42px)}to{opacity:1;transform:none}}
+@keyframes fadeRight{from{opacity:0;transform:translateX(42px)}to{opacity:1;transform:none}}
+@keyframes popIn{0%{opacity:0;transform:scale(.86)}70%{transform:scale(1.025)}100%{opacity:1;transform:scale(1)}}
+@keyframes iconBob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-7px) rotate(3deg)}}
+@keyframes shine{0%{transform:translateX(-150%) skewX(-20deg)}100%{transform:translateX(250%) skewX(-20deg)}}
+@keyframes pulseRing{0%{box-shadow:0 0 0 0 rgba(49,92,255,.28)}70%{box-shadow:0 0 0 12px rgba(49,92,255,0)}100%{box-shadow:0 0 0 0 rgba(49,92,255,0)}}
+@keyframes floatSoft{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes gradientMove{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.motion-in{opacity:0;will-change:transform,opacity}.motion-in.motion-show{animation:fadeUp .72s cubic-bezier(.2,.8,.2,1) forwards}.motion-left.motion-show{animation-name:fadeLeft}.motion-right.motion-show{animation-name:fadeRight}.motion-pop.motion-show{animation-name:popIn}.motion-d1{animation-delay:.08s!important}.motion-d2{animation-delay:.16s!important}.motion-d3{animation-delay:.24s!important}.motion-d4{animation-delay:.32s!important}.motion-d5{animation-delay:.40s!important}
+.stat-icon,.rec-icon,.step-icon,.compare-icon,.icon{animation:iconBob 3.2s ease-in-out infinite}.stat:nth-child(2) .stat-icon,.rec:nth-child(2) .rec-icon,.stepx:nth-child(2) .step-icon{animation-delay:.35s}.stat:nth-child(3) .stat-icon,.rec:nth-child(3) .rec-icon,.stepx:nth-child(3) .step-icon{animation-delay:.7s}.stat:nth-child(4) .stat-icon,.rec:nth-child(4) .rec-icon,.stepx:nth-child(4) .step-icon{animation-delay:1.05s}
+.hero-btn,.price-cta,.cta-actions a,.float-ref,.navcta{position:relative;overflow:hidden}.hero-btn.primary:after,.price-cta:after,.cta-actions .talk:after{content:"";position:absolute;top:-30%;left:-40%;width:28%;height:160%;background:linear-gradient(90deg,transparent,#fff8,transparent);animation:shine 3.8s ease-in-out infinite}.float-ref{animation:pulseRing 2.4s infinite,floatSoft 3.2s ease-in-out infinite}.price-card{animation:floatSoft 4.5s ease-in-out infinite}.notice-bar b{display:inline-block;animation:floatSoft 2.5s ease-in-out infinite}.tag,.eyebrow{transition:transform .25s}.tag:hover,.eyebrow:hover{transform:translateY(-3px) scale(1.03)}
+.rec,.compare-card,.reason,.faq-item,.stat,.stepx{transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s,border-color .3s}.rec:hover,.compare-card:hover,.reason:hover,.faq-item:hover{transform:translateY(-6px);box-shadow:0 18px 45px rgba(22,43,80,.10)}.stat:hover .stat-icon,.rec:hover .rec-icon,.stepx:hover .step-icon{animation-duration:.9s}.reason:hover .check{transform:scale(1.12) rotate(-6deg)}.check{transition:.25s}
+.hero-ref:before{animation:gradientMove 12s ease infinite;background-size:200% 200%}.page-title{animation:fadeLeft .7s both}.notice-bar{animation:fadeUp .65s .08s both}.ref-brand{transition:transform .25s}.ref-brand:hover{transform:translateY(-2px)}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.motion-in{opacity:1!important}}
