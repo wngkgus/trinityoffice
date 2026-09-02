@@ -37,12 +37,21 @@ if(galleryImages.length){
   document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
 }
 
-// v28: animate essentially every major block as it enters the viewport
-const motionSelectors=['.hero-ref > *','.stat','.center-head','.left-head','.compare-card','.compare-arrow','.rec','.tax-tip','.reason','.stepx','.faq-item','.cta-footer > *','.footer-grid > *','.card','.branch','.photo-card','.content > *'];
-const motionEls=[...new Set(motionSelectors.flatMap(s=>[...document.querySelectorAll(s)]))];
-motionEls.forEach((el,i)=>{if(el.classList.contains('motion-in'))return;el.classList.add('motion-in');const group=[...el.parentElement.children].indexOf(el);el.classList.add('motion-d'+((Math.max(0,group)%5)+1));if(el.matches('.hero-ref > :first-child,.left-head,.compare-card:first-child'))el.classList.add('motion-left');else if(el.matches('.price-card,.reason-box,.compare-card:last-child'))el.classList.add('motion-right');else if(el.matches('.stat,.rec,.stepx,.photo-card'))el.classList.add('motion-pop');});
-const motionIO=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('motion-show');motionIO.unobserve(e.target)}}),{threshold:.09,rootMargin:'0px 0px -35px'});
-motionEls.forEach(el=>motionIO.observe(el));
-
-// FAQ interaction like the reference site
-for(const item of document.querySelectorAll('.faq-item')){item.addEventListener('click',()=>{item.classList.toggle('open');const a=item.querySelector('.faq-a');if(a){a.style.maxHeight=item.classList.contains('open')?a.scrollHeight+'px':'0px';a.style.opacity=item.classList.contains('open')?'1':'0'}})}
+// Restore rich scroll motion across the reference-style home page without changing layout.
+const motionTargets=[
+  '.real-office-head','.office-gallery img','.office-proof > div',
+  '.center-head','.left-head','.stat','.compare > *','.recommend-grid > *',
+  '.why > *','.process .stepx','.faq-item','.cta-footer > *',
+  '.accounting-lockup','.accounting-lockup + p','.price-ribbon','.branch','.card'
+];
+const motionEls=[...document.querySelectorAll(motionTargets.join(','))];
+if(motionEls.length){
+  motionEls.forEach((el,i)=>{
+    el.classList.add(el.matches('.office-gallery img,.stat,.stepx,.faq-item,.card')?'motion-pop':'motion-reveal');
+    el.style.transitionDelay=((i%6)*55)+'ms';
+  });
+  const motionIO=new IntersectionObserver(entries=>entries.forEach(entry=>{
+    if(entry.isIntersecting){entry.target.classList.add('motion-on');motionIO.unobserve(entry.target)}
+  }),{threshold:.09,rootMargin:'0px 0px -35px 0px'});
+  motionEls.forEach(el=>motionIO.observe(el));
+}
