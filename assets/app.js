@@ -36,22 +36,3 @@ if(galleryImages.length){
   lb.addEventListener('click',e=>{if(e.target===lb||e.target.classList.contains('image-lightbox-close'))close()});
   document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
 }
-
-// Restore rich scroll motion across the reference-style home page without changing layout.
-const motionTargets=[
-  '.real-office-head','.office-gallery img','.office-proof > div',
-  '.center-head','.left-head','.stat','.compare > *','.recommend-grid > *',
-  '.why > *','.process .stepx','.faq-item','.cta-footer > *',
-  '.accounting-lockup','.accounting-lockup + p','.price-ribbon','.branch','.card'
-];
-const motionEls=[...document.querySelectorAll(motionTargets.join(','))];
-if(motionEls.length){
-  motionEls.forEach((el,i)=>{
-    el.classList.add(el.matches('.office-gallery img,.stat,.stepx,.faq-item,.card')?'motion-pop':'motion-reveal');
-    el.style.transitionDelay=((i%6)*55)+'ms';
-  });
-  const motionIO=new IntersectionObserver(entries=>entries.forEach(entry=>{
-    if(entry.isIntersecting){entry.target.classList.add('motion-on');motionIO.unobserve(entry.target)}
-  }),{threshold:.09,rootMargin:'0px 0px -35px 0px'});
-  motionEls.forEach(el=>motionIO.observe(el));
-}
