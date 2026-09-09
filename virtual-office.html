@@ -45,7 +45,17 @@
   .why{grid-template-columns:1fr!important;gap:30px!important;}
   .float-ref{left:16px!important;right:16px!important;bottom:12px!important;text-align:center!important;}
 }
-</style></head><body><header><div class="wrap nav"><a class="logo" href="index.html"><i>TRINITY</i> OFFICE</a><nav>
+</style>
+<style id="trinity-motion-v3">
+/* Subtle entrance motion for text and photos */
+.motion-reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,.61,.36,1);will-change:opacity,transform}
+.motion-reveal.motion-in{opacity:1;transform:translateY(0)}
+img.motion-reveal{transform:translateY(16px) scale(.985);transition:opacity .75s ease,transform .85s cubic-bezier(.22,.61,.36,1)}
+img.motion-reveal.motion-in{transform:translateY(0) scale(1)}
+.motion-delay-1{transition-delay:.07s}.motion-delay-2{transition-delay:.14s}.motion-delay-3{transition-delay:.21s}
+@media (prefers-reduced-motion:reduce){.motion-reveal{opacity:1!important;transform:none!important;transition:none!important}}
+</style>
+</head><body><header><div class="wrap nav"><a class="logo" href="index.html"><i>TRINITY</i> OFFICE</a><nav>
 <a class="" href="branches.html">지점소개</a>
 <a class="active" href="virtual-office.html">비상주사무실이란?</a>
 <a class="" href="about.html">트리니티 소개</a>
@@ -109,4 +119,15 @@
     </div>
   </div>
 </section>
-</main><footer><div class="wrap foot"><div><div class="logo"><i>TRINITY</i> OFFICE</div><p>원주공유오피스 | 트리니티 원주점 · 충주점</p><p>[원주점] 강원특별자치도 원주시 남산로 77 (일산동), 3층<br>[충주점] 충청북도 충주시 중원대로 3413, 2층</p></div><div><b style="color:#fff">CONTACT</b><p>010-7503-6756<br>trinity_333@naver.com<br></p></div></div></footer><div class="float"><a class="talk" target="_blank" href="https://talk.naver.com/profile/wohkm1o">네이버톡톡</a><a class="phone" href="tel:01075036756">전화상담</a></div><script src="assets/app.js"></script></body></html>
+</main><footer><div class="wrap foot"><div><div class="logo"><i>TRINITY</i> OFFICE</div><p>원주공유오피스 | 트리니티 원주점 · 충주점</p><p>[원주점] 강원특별자치도 원주시 남산로 77 (일산동), 3층<br>[충주점] 충청북도 충주시 중원대로 3413, 2층</p></div><div><b style="color:#fff">CONTACT</b><p>010-7503-6756<br>trinity_333@naver.com<br></p></div></div></footer><div class="float"><a class="talk" target="_blank" href="https://talk.naver.com/profile/wohkm1o">네이버톡톡</a><a class="phone" href="tel:01075036756">전화상담</a></div><script src="assets/app.js"></script>
+<script id="trinity-motion-v3-script">
+(function(){
+  var selectors='h1,h2,h3,.section-title,.eyebrow,.badge,p,img,.card,.feature-card,.stat,.stat-card';
+  var els=[].slice.call(document.querySelectorAll(selectors)).filter(function(el){return !el.closest('nav,header,.mobile-menu');});
+  els.forEach(function(el,i){el.classList.add('motion-reveal'); if(i%4) el.classList.add('motion-delay-'+(i%4));});
+  if(!('IntersectionObserver' in window)){els.forEach(function(el){el.classList.add('motion-in')});return;}
+  var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('motion-in');io.unobserve(e.target);}})},{threshold:.12,rootMargin:'0px 0px -35px 0px'});
+  els.forEach(function(el){io.observe(el)});
+})();
+</script>
+</body></html>
