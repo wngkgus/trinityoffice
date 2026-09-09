@@ -388,3 +388,9 @@ footer .brand-unified .brand-dark{color:#fff} footer .brand-unified strong{font-
 @media(max-width:850px){
   header .mobile-menu-panel.open,.ref-header .mobile-menu-panel.open{display:block!important;}
 }
+
+/* V8 desktop fix: hamburger is mobile-only */
+.mobile-menu-btn{display:none!important;}
+@media (max-width: 768px){
+  .mobile-menu-btn{display:block!important;}
+}
