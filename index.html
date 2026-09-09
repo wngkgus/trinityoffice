@@ -41,19 +41,6 @@
 .console-top{padding:22px 26px 12px;display:flex;align-items:center;justify-content:space-between}.console-label{font-size:10px;font-weight:900;letter-spacing:1.6px;color:#168f8a}.console-status{font-size:9px;font-weight:900;color:#168f8a;background:#e8f6f4;border-radius:999px;padding:7px 10px}
 .console-main{padding:8px 26px 22px}.console-copy small{display:block!important;text-align:left!important;color:#7b8a98!important;font-size:9px;letter-spacing:1.5px}.console-copy h3{text-align:left!important;font-size:26px!important;line-height:1.22;margin:8px 0 8px!important;letter-spacing:-1.4px}.console-copy p{font-size:11px;color:#687386;margin:0}.console-price{margin-top:22px;padding:20px 0 4px;border-top:1px solid #e1eceb}.console-price>span{display:block;font-size:9px;font-weight:900;letter-spacing:1.5px;color:#7b8a98}.console-price strong{display:block;font-size:44px;line-height:1;margin:8px 0 8px;letter-spacing:-2px;white-space:nowrap;color:#07152b}.console-price strong em{font-style:normal;font-size:15px;margin-right:5px;color:#168f8a}.console-price strong small{display:inline!important;color:#168f8a!important;font-size:20px!important}.console-price p{font-size:10px;color:#7b8a98;margin:0}.console-divider{height:1px;background:#e1eceb;margin:0 26px}.console-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 16px;padding:22px 26px;color:#314356;font-size:11px;font-weight:800}.console-grid span{position:relative;padding-left:21px;word-break:keep-all}.console-grid span:before{content:"✓";position:absolute;left:0;top:-1px;width:16px;height:16px;border-radius:50%;display:grid;place-items:center;background:#168f8a;color:#fff;font-size:10px}.console-cta{margin:0 26px 26px!important;padding:15px 17px!important;border-radius:11px!important;display:flex!important;align-items:center;justify-content:space-between;text-align:left!important;background:#0b1930!important}.console-cta span{font-size:10px;color:#8fd6d1}.console-cta b{font-size:12px;color:#fff}
 @media(max-width:800px){.price-console{margin-top:10px}.console-top{padding:20px 22px 10px}.console-main{padding:8px 22px 20px}.console-copy h3{font-size:23px!important}.console-price strong{font-size:38px}.console-divider{margin:0 22px}.console-grid{padding:20px 22px;grid-template-columns:1fr;gap:12px}.console-cta{margin:0 22px 22px!important}.hero-ref h1,.hero-ref p,.notice-bar,.console-copy h3,.console-copy p,.console-grid span,.console-cta{word-break:keep-all;overflow-wrap:break-word}}
-
-/* mobile polish v2: 2-up swipe gallery + exact 2-line hero + restored visual cues */
-@media(max-width:800px){
-  .hero-ref h1{font-size:clamp(31px,9.2vw,37px);line-height:1.16;letter-spacing:-2.2px;white-space:nowrap;margin:24px 0 22px}
-  .hero-ref h1 br{display:block}
-  .hero-ref h1 span{white-space:nowrap}
-  .office-gallery{display:flex;grid-template-columns:none;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:0 2px 10px;scrollbar-width:none}
-  .office-gallery::-webkit-scrollbar{display:none}
-  .office-gallery img{flex:0 0 calc((100% - 10px)/2);width:calc((100% - 10px)/2);aspect-ratio:1.28/1;scroll-snap-align:start;border-radius:14px}
-  .office-gallery:after{content:"→ 옆으로 넘겨보기";flex:0 0 118px;min-height:120px;display:grid;place-items:center;text-align:center;color:#168f89;background:#eff9f8;border:1px dashed #9fd4cf;border-radius:14px;font-size:11px;font-weight:900;scroll-snap-align:end}
-  .hero-points span:before{display:inline!important}
-  .stat-icon,.rec-icon,.step-icon,.compare-icon{display:grid!important;visibility:visible!important;opacity:1!important}
-}
 </style><style>
 /* Mobile readability & spacing refinement */
 @media (max-width: 767px){
@@ -95,7 +82,34 @@
   .why{grid-template-columns:1fr!important;gap:30px!important;}
   .float-ref{left:16px!important;right:16px!important;bottom:12px!important;text-align:center!important;}
 }
-</style></head><body><div class="ref-page">
+</style>
+<style id="mobile-clean-fix">
+@media (max-width:800px){
+  html,body{width:100%;max-width:100%;overflow-x:hidden!important}
+  .ref-page{width:100%!important;max-width:100%!important;overflow:hidden!important}
+  .ref-wrap{width:100%!important;max-width:100%!important;margin:0!important}
+  .ref-header{padding:0 16px!important}
+  .ref-brand strong{font-size:25px!important;letter-spacing:-1.4px!important;white-space:nowrap}
+  .notice-bar{width:100%!important;padding:0 12px!important;text-align:center}
+  .hero-ref{width:100%!important;padding:54px 20px 48px!important;display:block!important;overflow:hidden!important}
+  .hero-ref>div:first-child{width:100%!important;min-width:0!important}
+  .hero-ref h1{font-size:clamp(31px,8.8vw,38px)!important;line-height:1.18!important;letter-spacing:-2.1px!important;margin:20px 0 22px!important;white-space:normal!important}
+  .hero-ref h1 br{display:none!important}
+  .hero-ref h1 span{display:block!important;white-space:nowrap!important}
+  .hero-ref p{font-size:14px!important;line-height:1.75!important;white-space:normal!important}
+  .hero-ref p br{display:none!important}
+  .hero-ref p strong{display:block!important;margin-top:4px}
+  .hero-actions{display:grid!important;grid-template-columns:1fr!important;width:100%!important}
+  .hero-btn{width:100%!important;max-width:100%!important;padding:0 14px!important}
+  .hero-points{display:flex!important;flex-wrap:wrap!important;gap:10px 18px!important}
+  .price-console{margin-top:34px!important;width:100%!important}
+  .real-office{padding:52px 16px!important}
+  .office-gallery{display:flex!important;overflow-x:auto!important;scroll-snap-type:x mandatory;gap:10px!important;padding-bottom:8px!important;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .office-gallery::-webkit-scrollbar{display:none}
+  .office-gallery img{flex:0 0 calc((100% - 10px)/2)!important;width:calc((100% - 10px)/2)!important;aspect-ratio:1/1!important;object-fit:cover!important;scroll-snap-align:start}
+}
+</style>
+</head><body><div class="ref-page">
 <div class="ref-wrap"><header class="ref-header"><a class="ref-brand ref-brand-ko" href="index.html"><span class="brand-mark"><span></span><span></span><span></span></span><strong style="font-size:30px;letter-spacing:-1.5px"><span style="color:#55b8ad">트리니티</span> <span style="color:#07152b">공유오피스</span></strong></a><nav class="ref-nav"><a class="active" href="index.html">트리니티 공유오피스</a><a href="branches.html">지점소개</a><a href="virtual-office.html">비상주사무실 정보</a><a href="contract.html">계약절차</a><a href="pricing.html">요금안내</a><a href="about.html">브랜드소개</a><a href="faq.html">FAQ</a><button class="mobile-menu-btn" type="button" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span><span></span></button></nav><div class="mobile-menu-panel" id="mobileMenu"><a href="branches.html">지점소개</a><a href="virtual-office.html">비상주사무실이란?</a><a href="about.html">트리니티 소개</a><a href="contract.html">계약절차</a><a href="pricing.html">요금안내</a><a href="faq.html">FAQ</a><a target="_blank" href="https://talk.naver.com/profile/wohkm1o">상담 문의</a></div></header></div>
 
 <div class="ref-wrap"><div class="notice-bar">●&nbsp;&nbsp; 이번 달 원주·충주 비상주사무실 <b>&nbsp;상담 혜택 진행 중</b></div>
