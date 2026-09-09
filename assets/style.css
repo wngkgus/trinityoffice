@@ -370,3 +370,21 @@ body.intro-ready .hook-underline:after{animation:hookUnderline .8s .82s cubic-be
 .brand-unified strong{font-size:22px;font-weight:950;letter-spacing:-1px}.brand-mint{color:#55b8ad}.brand-dark{color:#07152b}
 footer .brand-unified .brand-dark{color:#fff} footer .brand-unified strong{font-size:21px}
 @media(max-width:800px){.brand-unified strong{font-size:18px}.brand-unified .brand-mark{transform:scale(.82);transform-origin:left center;width:42px}}
+
+/* V19 mobile-only hamburger + lock horizontal page drag. No other visual changes. */
+@media(max-width:850px){
+  html,body{max-width:100%;overflow-x:hidden!important;overscroll-behavior-x:none;touch-action:pan-y;}
+  header .nav{position:relative}
+  header nav .navcta{display:none!important}
+  header nav .mobile-menu-btn{display:block!important;background:transparent;border:0;padding:8px;cursor:pointer;color:#07152b}
+  header nav .mobile-menu-btn span{display:block;width:24px;height:3px;background:currentColor;margin:4px 0;border-radius:2px}
+  header .mobile-menu-panel.open{display:block;position:absolute;top:67px;left:14px;right:14px;background:#fff;border:1px solid #e2e6ed;border-radius:12px;box-shadow:0 14px 36px #07152b26;padding:8px;z-index:100}
+  header .mobile-menu-panel a{display:block;padding:13px 14px;color:#07152b;text-decoration:none;font-size:14px;font-weight:800;border-bottom:1px solid #eef1f4}
+  header .mobile-menu-panel a:last-child{border-bottom:0}
+}
+
+/* Fix: mobile menu panel must stay hidden unless hamburger is opened */
+.mobile-menu-panel{display:none!important;}
+@media(max-width:850px){
+  header .mobile-menu-panel.open,.ref-header .mobile-menu-panel.open{display:block!important;}
+}
